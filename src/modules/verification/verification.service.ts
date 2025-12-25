@@ -44,16 +44,18 @@ export class VerificationService {
     return user;
   }
 
-  private getMessage(type: EverificationTypes, otp: string) {
-    switch (type) {
-      case EverificationTypes.REGISTER:
-        return `Tastiqlash kodi ${otp}`;
-      case EverificationTypes.RESET_PASSWORD:
-        return `Parolni qayta tilash kodi ${otp}`;
-      case EverificationTypes.EDIT_PHONE:
-        return `Telefonni o'zgartirish kodi ${otp}`;
+ private getMessage(type: EverificationTypes, otp: string) {
+        switch (type) {
+
+            case EverificationTypes.REGISTER:
+                return `Fixoo platformasidan ro'yxatdan o'tish uchun tasdiqlash kodi: ${otp}. Kodni hech kimga bermang!`;
+            case EverificationTypes.RESET_PASSWORD:
+                return `Fixoo platformasida parolingizni tiklash uchun tasdiqlash kodi: ${otp}. Kodni hech kimga bermang!`;
+            case EverificationTypes.EDIT_PHONE:
+                return `Fixoo platformasida telefoningizni o'zgartirish uchun tasdiqlash kodi: ${otp}. Kodni hech kimga bermang!`;
+        }
     }
-  }
+
 
   async sendOtp(payload: sendOtpDto) {
     const { type, phone } = payload;
